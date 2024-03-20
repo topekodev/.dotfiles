@@ -17,7 +17,15 @@ return {
             vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
         end
 
-        local capabilities = cmp_nvim_lsp.default_capabilities()
+        local capabilities = vim.tbl_deep_extend(
+            "force",
+            {},
+            vim.lsp.protocol.make_client_capabilities(),
+            cmp_nvim_lsp.default_capabilities())
+        capabilities.textDocument.completion.completionItem.snippetSupport = true
+        capabilities.textDocument.completion.completionItem.resolveSupport = {
+            properties = { "documentation", "detail", "additionalTextEdits" }
+        }
 
         lspconfig["lua_ls"].setup({
             capabilities = capabilities,
@@ -26,12 +34,6 @@ return {
                 Lua = {
                     diagnostics = {
                         globals = { "vim" }
-                    },
-                    workspace = {
-                        library = {
-                            [vim.fn.expand("$VIMRUNTIME/lua")] = true,
-                            [vim.fn.stdpath("config") .. "/lua"] = true
-                        }
                     }
                 }
             }

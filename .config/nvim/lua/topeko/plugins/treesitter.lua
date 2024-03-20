@@ -1,11 +1,14 @@
 return {
     "nvim-treesitter/nvim-treesitter",
     dependencies = {
+        "nvim-treesitter/nvim-treesitter-context",
         "windwp/nvim-ts-autotag"
     },
     build = ":TSUpdate",
     config = function()
         local treesitter = require('nvim-treesitter.configs')
+        local treesitter_context = require('treesitter-context')
+
         treesitter.setup {
             ensure_installed = {
                 "javascript", "typescript", "css", "html", "json", "svelte", "yaml", "java", "python", "bash", "c", "lua", "vim", "vimdoc", "query"
@@ -23,6 +26,11 @@ return {
             autotag = {
                 enable = true
             }
+        }
+
+        treesitter_context.setup {
+            enable = true,
+            line_numbers = true
         }
     end
 }
