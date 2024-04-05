@@ -4,8 +4,8 @@ vim.g.mapleader = " "
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
 -- Buffers
-vim.keymap.set("n", "<leader>p", vim.cmd.bprev)
 vim.keymap.set("n", "<leader>n", vim.cmd.bnext)
+vim.keymap.set("n", "<leader>N", vim.cmd.bprev)
 vim.keymap.set("n", "<leader>db", vim.cmd.bdelete)
 
 -- Tabs

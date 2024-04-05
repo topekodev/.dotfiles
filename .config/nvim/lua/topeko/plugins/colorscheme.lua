@@ -12,6 +12,9 @@ return {
                 treesitter = true,
                 treesitter_context = true,
                 mason = true,
+                telescope = {
+                    enabled = true
+                }
                 -- For more plugins integrations (https://github.com/catppuccin/nvim#integrations)
             },
             color_overrides = {
