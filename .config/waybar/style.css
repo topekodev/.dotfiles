@@ -1,0 +1,50 @@
+* {
+	font-family: Roboto;
+	font-size: 14px;
+}
+window#waybar {
+	background: rgba(18, 16, 18, 0.9);
+	color: #F1FFFE;
+}
+box.horizontal {
+	padding: 3px 5px;
+}
+box.horizontal.modules-right widget > label {
+	padding: 0 10px;
+}
+#tray {
+    padding: 0 10px;
+}
+#system {
+    padding: 0 10px;
+    color: #F1FFFE;
+}
+#system widget.system-option > label {
+    padding: 0;
+    margin-left: 20px;
+    color: #F1FFFE;
+}
+#workspaces {
+	padding: 0;
+}
+#workspaces button {
+	color: Grey;
+	padding: 0 5px;
+	border: none;
+	border-radius: 0;
+}
+#workspaces button:hover {
+    background: none;
+}
+#workspaces button.active {
+    color: #F1FFFE;
+}
+#window {
+	padding: 0;
+	margin-left: 10px;
+}
+#network.disconnected,
+#bluetooth.disabled,
+#wireplumber.muted {
+	color: Grey;
+}

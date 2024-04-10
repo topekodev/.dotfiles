@@ -13,14 +13,14 @@ return {
             violet   = '#a9a1e1',
             magenta  = '#c678dd',
             blue     = '#51afef',
-            red      = '#ec5f67',
+            red      = '#F38BA8',
         }
         require('lualine').setup({
             options = {
                 theme = {
                     normal = {
                         a = { fg = colors.fg, bg = colors.bg },
-                        b = { fg = colors.fg, bg = colors.blue },
+                        b = { fg = colors.fg, bg = colors.red },
                         c = { fg = colors.fg, bg = colors.bg }
                     },
                     inactive = {

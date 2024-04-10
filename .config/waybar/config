@@ -1,0 +1,104 @@
+{
+    "layer": "top",
+    "modules-left": ["group/system", "hyprland/workspaces"],
+    "modules-center": ["hyprland/window"],
+    "modules-right": ["tray", "bluetooth", "network", "wireplumber", "battery", "custom/search", "clock"],
+    "hyprland/workspaces": {
+        "all-outputs": true,
+        "disable-scroll": true,
+        "format": "{name}",
+        "format-icons": {
+            "urgent": "",
+            "focused": "",
+            "default": "",
+        }
+    },
+    "group/system": {
+        "orientation": "horizontal",
+        "drawer": {
+            "transition-duration": 100,
+            "children-class": "system-option"
+        },
+        "modules": [
+            "custom/system",
+            "custom/power",
+            "custom/restart",
+            "custom/lock"
+        ]
+    },
+    "custom/system": {
+        "format": "",
+        "tooltip": false
+    },
+    "custom/power": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "poweroff"
+    },
+    "custom/restart": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "reboot"
+    },
+    "custom/lock": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "hyprlock"
+    },
+    "custom/search": {
+        "format": "",
+        "tooltip": false,
+        "on-click": "fuzzel"
+    },
+    "hyprland/window": {
+        "format": "{title}",
+        "max-length": 50
+    },
+    "tray": {
+        "icon-size": 20,
+        "spacing": 10,
+        "reverse-direction": true
+    },
+    "bluetooth": {
+	    "format": "",
+	    "format-connected" : "",
+	    "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+	    "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+	    "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+	    "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+	    "on-click": "python3 ~/.scripts/btcontrol-dmenu.py"
+    },
+    "network": {
+	    "format": "{ifname}",
+	    "format-wifi": "",
+	    "format-ethernet": "",
+	    "format-disconnected": "",
+	    "tooltip-format": "{ifname} via {gwaddr}",
+	    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+	    "tooltip-format-ethernet": "{ipaddr}/{cidr}",
+	    "tooltip-format-disconnected": "Disconnected",
+	    "max-length": 50,
+	    "on-click": "python3 ~/.scripts/nmcontrol-dmenu.py"
+    },
+    "wireplumber": {
+	    "format": "{volume}% {icon}",
+	    "format-muted": " ",
+	    "max-volume": 100,
+	    "format-icons": {
+	    	"headphone": "",
+		    "default": ["", "", "", ""],
+	    },
+        "on-click": "python3 ~/.scripts/wpcontrol-dmenu.py"
+    },
+    "battery": {
+        "format": "{capacity}% {icon}",
+	    "format-charging": "{capacity}% ",
+        "format-plugged": "{capacity}% ",
+        "format-full": "",
+        "format-icons": ["", "", "", "", ""],
+        "interval": 3
+    },
+    "clock": {
+        "format": "{:%a, %d. %b  %H:%M}"
+    }
+}
