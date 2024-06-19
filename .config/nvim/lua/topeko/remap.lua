@@ -9,7 +9,7 @@ vim.keymap.set("n", "<leader>p", vim.cmd.bprev)
 vim.keymap.set("n", "<leader>db", vim.cmd.bdelete)
 
 -- Tabs
-vim.keymap.set("n", "<leader>t", vim.cmd.tabe)
+vim.keymap.set("n", "<leader>t", vim.cmd.Texplore)
 vim.keymap.set("n", "<leader>dt", vim.cmd.tabc)
 for i = 1, 9 do
     vim.keymap.set("n", "<leader>" .. i, function()

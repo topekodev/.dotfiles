@@ -3,30 +3,31 @@ return {
     dependencies = { 'nvim-tree/nvim-web-devicons' },
     config = function()
         local colors = {
-            bg       = '#1F1F26',
-            fg       = '#F1FFFE',
-            yellow   = '#ECBE7B',
-            cyan     = '#008080',
-            darkblue = '#081633',
-            green    = '#98be65',
-            orange   = '#FF8800',
-            violet   = '#a9a1e1',
-            magenta  = '#c678dd',
-            blue     = '#51afef',
-            red      = '#F38BA8',
+            base     = '#121012',
+            surface0 = '#1F1F26',
+            surface2 = '#2F313A',
+            text     = '#F1FFFE',
+            subtext0 = '#B7BCD0',
+            highlight= '#F38BA8',
         }
         require('lualine').setup({
             options = {
                 theme = {
                     normal = {
-                        a = { fg = colors.fg, bg = colors.bg },
-                        b = { fg = colors.fg, bg = colors.red },
-                        c = { fg = colors.fg, bg = colors.bg }
+                        a = { bg = colors.base, fg = colors.text },
+                        b = { bg = colors.surface0, fg = colors.text },
+                        c = { bg = colors.base, fg = colors.text },
+                        x = { bg = colors.base, fg = colors.text },
+                        y = { bg = colors.base, fg = colors.text },
+                        z = { bg = colors.base, fg = colors.text }
                     },
                     inactive = {
-                        a = { fg = colors.fg, bg = colors.bg },
-                        b = { fg = colors.fg, bg = colors.bg },
-                        c = { fg = colors.fg, bg = colors.bg }
+                        a = { bg = colors.base, fg = colors.subtext0 },
+                        b = { bg = colors.base, fg = colors.subtext0 },
+                        c = { bg = colors.base, fg = colors.subtext0 },
+                        x = { bg = colors.base, fg = colors.subtext0 },
+                        y = { bg = colors.base, fg = colors.subtext0 },
+                        z = { bg = colors.base, fg = colors.subtext0 }
                     },
                 },
                 icons_enabled = false,

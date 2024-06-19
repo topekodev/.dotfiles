@@ -8,16 +8,20 @@ return {
 
         local mason_lspconfig = require("mason-lspconfig")
 
-        mason.setup({})
+        mason.setup({ PATH = "append" })
 
         mason_lspconfig.setup({
             ensure_installed = {
                 "lua_ls",
+                "bashls",
                 "tsserver",
                 "html",
+                "htmx",
                 "cssls",
                 "pyright",
-                "svelte"
+                "svelte",
+                "rust_analyzer",
+                "gopls",
             },
             automatic_installation = true
         })

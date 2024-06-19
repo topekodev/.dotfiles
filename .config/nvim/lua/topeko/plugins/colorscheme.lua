@@ -33,7 +33,10 @@ return {
                         CursorLine = { bg = mocha.surface0 },
                         CursorLineNr = { fg = mocha.subtext0 },
                         TeleScopeSelection = { bg = mocha.surface2 },
-                        TelescopeSelectionCaret = { bg = mocha.surface2 }
+                        TelescopeSelectionCaret = { bg = mocha.surface2 },
+                        TabLine = { bg = mocha.base, fg = mocha.subtext0 },
+                        TabLineFill = { bg = mocha.base, fg = mocha.subtext0 },
+                        TabLineSel = { bg = mocha.red, fg = mocha.base },
                     }
                 end
             }
