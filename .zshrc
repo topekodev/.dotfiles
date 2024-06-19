@@ -39,7 +39,7 @@ bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -s '^e' 'vim $(fzf)\n'
-bindkey -s '^f' 'zsh ~/.scripts/tmux-sessionizer\n'
+bindkey -s '^f' '~/.scripts/tmux-sessionizer.sh\n'
 
 # History
 HISTSIZE=5000
