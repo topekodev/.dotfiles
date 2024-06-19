@@ -15,14 +15,13 @@ box.horizontal.modules-right widget > label {
 #tray {
     padding: 0 10px;
 }
-#system {
+#custom-system {
     padding: 0 10px;
     color: #F1FFFE;
 }
-#system widget.system-option > label {
+#custom-media.stopped {
     padding: 0;
-    margin-left: 20px;
-    color: #F1FFFE;
+    margin: 0;
 }
 #workspaces {
 	padding: 0;
@@ -44,7 +43,22 @@ box.horizontal.modules-right widget > label {
 	margin-left: 10px;
 }
 #network.disconnected,
-#bluetooth.disabled,
+#bluetooth.off,
 #wireplumber.muted {
 	color: Grey;
+}
+.enabled {
+    color: #F1FFFE;
+}
+.disabled {
+    color: Grey;
+}
+#battery.warning {
+    color: #FFB86C;
+}
+#battery.critical {
+    color: #FF5555;
+}
+#battery.charging {
+    color: #50FA7B;
 }

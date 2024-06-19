@@ -4,13 +4,13 @@ import re
 DMENU_COMMAND = "fuzzel --dmenu"
 
 def promptDmenu(prompt, items):
-    output = subprocess.run(f"echo '{items}' | {DMENU_COMMAND} --prompt={prompt}", shell=True, encoding='utf-8', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output = subprocess.run(f"echo '{items}' | {DMENU_COMMAND} --prompt='{prompt} '", shell=True, encoding='utf-8', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if (output.returncode != 0):
         return None
     return output.stdout
 
 def promptPassword():
-    output = subprocess.run(f"{DMENU_COMMAND} --password --prompt=Password:", shell=True, encoding='utf-8', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
+    output = subprocess.run(f"{DMENU_COMMAND} --password --prompt='Password: '", shell=True, encoding='utf-8', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
     if (output.returncode != 0):
         return None
     return output.stdout
@@ -26,7 +26,7 @@ def newWifi():
     for i in networks:
         line = f"{i['ssid']}\n"
         wifi += line
-    selected = str(promptDmenu("Select:", wifi))
+    selected = str(promptDmenu("Wi-Fi:", wifi.strip()))
     return selected.strip()
 
 def savedWifi():
@@ -43,7 +43,7 @@ def savedWifi():
             else:
                 line = f"{i['name']}\n"
             wifi += line
-    selected = str(promptDmenu("Select:", wifi))
+    selected = str(promptDmenu("Wi-Fi:", wifi.strip()))
     return selected.replace("*", "").strip()
 
 def connectWifi(ssid, password=None):
@@ -74,7 +74,7 @@ def main():
         "Connection Manager"
     ])
     
-    selected = str(promptDmenu("Select:", options)).strip()
+    selected = str(promptDmenu("Network:", options)).strip()
     if (selected == "Choose Network"):
         network = savedWifi()
         if (network != "None"):

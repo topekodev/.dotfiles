@@ -1,8 +1,8 @@
-#/usr/bin/zsh
+#/usr/bin/env bash
+
 ARG=$1
 if [ -z $ARG ]; then
-    echo "Usage: screenshot.sh <type>"
-    echo "type: area, area-clipboard, fullscreen, fullscreen-clipboard"
+    echo "Usage: $0 <area|area-clipboard|fullscreen|fullscreen-clipboard>"
     exit 1
 fi
 
@@ -17,8 +17,8 @@ case $ARG in
         notify-send -t 3000 "Screenshot saved" "$filename"
         ;;
     area-clipboard)
-        slurp | grim -g - | $CLIPBOARD
-        notify-send -t 3000 "Screenshot copied to clipboard"
+        slurp | grim -g - - | $CLIPBOARD
+        notify-send -t 3000 "Screenshot copied to clipboard" "Use Ctrl+v to paste."
         ;;
     fullscreen)
         filename=$LOCATION/screenshot-$(date +%s).png
@@ -27,11 +27,9 @@ case $ARG in
         ;;
     fullscreen-clipboard)
         grim - | $CLIPBOARD
-        notify-send -t 3003 "Screenshot copied to clipboard"
+        notify-send -t 3000 "Screenshot copied to clipboard" "Use Ctrl+v to paste."
         ;;
     *)
-        echo "Invalid type"
-        echo "type: area, area-clipboard, fullscreen, fullscreen-clipboard"
         exit 1
         ;;
 esac

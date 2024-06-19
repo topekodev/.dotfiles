@@ -1,8 +1,7 @@
 {
     "layer": "top",
-    "modules-left": ["group/system", "hyprland/workspaces"],
-    "modules-center": ["hyprland/window"],
-    "modules-right": ["tray", "bluetooth", "network", "wireplumber", "battery", "custom/search", "clock"],
+    "modules-left": ["custom/system", "hyprland/workspaces"],
+    "modules-right": ["tray", "custom/media", "wireplumber", "bluetooth", "network", "battery", "custom/search", "custom/dunst", "clock"],
     "hyprland/workspaces": {
         "all-outputs": true,
         "disable-scroll": true,
@@ -13,37 +12,38 @@
             "default": "",
         }
     },
-    "group/system": {
-        "orientation": "horizontal",
-        "drawer": {
-            "transition-duration": 100,
-            "children-class": "system-option"
-        },
-        "modules": [
-            "custom/system",
-            "custom/power",
-            "custom/restart",
-            "custom/lock"
-        ]
-    },
     "custom/system": {
         "format": "",
-        "tooltip": false
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/system.sh",
+        "return-type": "json",
+        "on-click": "~/.scripts/system-dmenu.sh",
+        "restart-interval": 7200
     },
-    "custom/power": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "poweroff"
+    "custom/fcitx": {
+        "format": "{}",
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/fcitx.sh",
+        "return-type": "json",
+        "on-click": "fcitx5-remote -t",
+        "restart-interval": 1
     },
-    "custom/restart": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "reboot"
+    "custom/media": {
+        "format": "{}",
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/media.sh",
+        "return-type": "json",
+        "on-click": "playerctl play-pause",
+        "restart-interval": 1
     },
-    "custom/lock": {
-        "format": "",
-        "tooltip": false,
-        "on-click": "hyprlock"
+    "custom/dunst": {
+        "format": "{}",
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/dunst.sh",
+        "return-type": "json",
+        "on-click": "python3 ~/.scripts/notification-dmenu.py",
+        "on-click-right": "dunstctl set-paused toggle",
+        "restart-interval": 1
     },
     "custom/search": {
         "format": "",
@@ -74,28 +74,38 @@
 	    "format-ethernet": "",
 	    "format-disconnected": "",
 	    "tooltip-format": "{ifname} via {gwaddr}",
-	    "tooltip-format-wifi": "{essid} ({signalStrength}%)",
+	    "tooltip-format-wifi": "{essid}",
 	    "tooltip-format-ethernet": "{ipaddr}/{cidr}",
 	    "tooltip-format-disconnected": "Disconnected",
 	    "max-length": 50,
 	    "on-click": "python3 ~/.scripts/nmcontrol-dmenu.py"
     },
     "wireplumber": {
-	    "format": "{volume}% {icon}",
-	    "format-muted": " ",
+	    "format": "{icon}",
 	    "max-volume": 100,
 	    "format-icons": {
 	    	"headphone": "",
 		    "default": ["", "", "", ""],
 	    },
-        "on-click": "python3 ~/.scripts/wpcontrol-dmenu.py"
+        "tooltip-format": "{volume}% ({node_name})",
+        "on-click": "python3 ~/.scripts/wpcontrol-dmenu.py",
+        "on-click-right": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle"
     },
     "battery": {
-        "format": "{capacity}% {icon}",
-	    "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format": "{icon}",
+        "format-charging": "{icon}",
+        "format-plugged": "",
         "format-full": "",
         "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{capacity}%",
+        "tooltip-format-charging": "Charging: {capacity}%",
+        "tooltip-format-plugged": "Plugged",
+        "tooltip-format-full": "Full",
+        "states": {
+            "warning": 20,
+            "critical": 10
+        },
+        "on-update": "~/.config/waybar/scripts/battery-event.sh",
         "interval": 3
     },
     "clock": {

@@ -1,0 +1,5 @@
+timeout 150 'brightnessctl -s set 10' resume 'brightnessctl -r'
+timeout 300 'hyprctl dispatch dpms off' resume 'hyprctl dispatch dpms on'
+timeout 310 'swaylock -f'
+timeout 600 'systemctl suspend-then-hibernate'
+before-sleep 'swaylock -f'
