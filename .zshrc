@@ -35,6 +35,7 @@ zstyle ':fzf-tab:complete:*' fzf-preview
 zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview
 
 # Keybindings
+bindkey "^?" backward-delete-char
 bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward

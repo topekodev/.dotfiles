@@ -53,6 +53,12 @@ box.horizontal.modules-right widget > label {
 .disabled {
     color: Grey;
 }
+.activated {
+    color: #F1FFFE;
+}
+.deactivated {
+    color: Grey;
+}
 #battery.warning {
     color: #FFB86C;
 }

@@ -1,0 +1,5 @@
+.dotfiles
+.ssh/id*
+.ssh/known_hosts*
+.zsh_history
+.config/tmux/plugins

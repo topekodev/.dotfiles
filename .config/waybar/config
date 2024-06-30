@@ -1,7 +1,7 @@
 {
     "layer": "top",
     "modules-left": ["custom/system", "hyprland/workspaces"],
-    "modules-right": ["tray", "custom/media", "wireplumber", "bluetooth", "network", "battery", "custom/search", "custom/dunst", "clock"],
+    "modules-right": ["tray", "custom/airplay", "idle_inhibitor", "custom/media", "wireplumber", "bluetooth", "network", "battery", "custom/search", "custom/dunst", "clock"],
     "hyprland/workspaces": {
         "all-outputs": true,
         "disable-scroll": true,
@@ -26,6 +26,19 @@
         "exec": "~/.config/waybar/scripts/fcitx.sh",
         "return-type": "json",
         "on-click": "fcitx5-remote -t",
+        "restart-interval": 1
+    },
+    "idle_inhibitor": {
+        "format": "",
+        "tooltip-format-deactivated": "Idling normally",
+        "tooltip-format-activated": "Idling inhibited"
+    },
+    "custom/airplay": {
+        "format": "{}",
+        "tooltip": true,
+        "exec": "~/.config/waybar/scripts/airplay.sh",
+        "return-type": "json",
+        "on-click": "~/.scripts/airplay.sh",
         "restart-interval": 1
     },
     "custom/media": {

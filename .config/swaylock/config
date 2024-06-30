@@ -1,5 +1,8 @@
-indicator-radius=60
-indicator-thickness=10
+daemonize
+
+indicator-idle-visible
+indicator-radius=90
+indicator-thickness=20
 
 font-size=18
 
@@ -10,10 +13,10 @@ text-ver-color=ffffff
 text-clear-color=ffffff
 text-wrong-color=ffffff
 
-inside-color=00000000
-inside-ver-color=00000000
-inside-clear-color=00000000
-inside-wrong-color=00000000
+inside-color=000000ff
+inside-ver-color=000000ff
+inside-clear-color=000000ff
+inside-wrong-color=000000ff
 line-uses-inside
 
 ring-color=ffffff

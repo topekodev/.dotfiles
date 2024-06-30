@@ -11,9 +11,7 @@ def promptDmenu(prompt, items):
 
 def promptPassword():
     output = subprocess.run(f"{DMENU_COMMAND} --password --prompt='Password: '", shell=True, encoding='utf-8', stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-    if (output.returncode != 0):
-        return None
-    return output.stdout
+    return output.stdout.strip()
 
 def newWifi():
     subprocess.run("notify-send -t 1000 'Scanning Wifi'", shell=True)
@@ -46,9 +44,9 @@ def savedWifi():
     selected = str(promptDmenu("Wi-Fi:", wifi.strip()))
     return selected.replace("*", "").strip()
 
-def connectWifi(ssid, password=None):
+def connectWifi(ssid, password=""):
     subprocess.run(f"notify-send -t 1000 'Connecting' '{ssid}'", shell=True)
-    if (password):
+    if (password != ""):
         result = subprocess.run(f"nmcli device wifi connect '{ssid}' password {password}", shell=True)
     else:
         result = subprocess.run(f"nmcli device wifi connect '{ssid}'", shell=True, encoding='utf-8', stdout=subprocess.PIPE, stderr=subprocess.PIPE)

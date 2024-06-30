@@ -7,7 +7,7 @@ else
     killall -SIGUSR2 waybar
 fi
 
-# Dusnt
+# Dunst
 killall dunst
 dunst &
 
