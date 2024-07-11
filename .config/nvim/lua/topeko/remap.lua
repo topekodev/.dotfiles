@@ -3,6 +3,21 @@ vim.g.mapleader = " "
 -- Netrw
 vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
 
+-- Create file
+vim.keymap.set('n', '<leader>c', function()
+    local file = vim.fn.input("Enter filename or path: ")
+    if (file ~= "") then
+        vim.cmd(':e ' .. file)
+    else
+        vim.cmd(':echo "Aborted"')
+    end
+end)
+
+-- Alternate file
+vim.keymap.set("n", "<leader>a", function()
+    vim.cmd(":e#")
+end)
+
 -- Buffers
 vim.keymap.set("n", "<leader>n", vim.cmd.bnext)
 vim.keymap.set("n", "<leader>p", vim.cmd.bprev)
@@ -16,3 +31,6 @@ for i = 1, 9 do
         vim.cmd("tabn " .. i)
     end)
 end
+
+-- tmux-sessionizer
+vim.keymap.set("n", "<C-f>", ":silent !tmux neww ~/.scripts/tmux-sessionizer.sh<CR>")

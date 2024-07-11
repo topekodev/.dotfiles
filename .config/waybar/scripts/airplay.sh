@@ -5,11 +5,11 @@ DISABLED=
 if [ -z $(pidof uxplay) ]; then
     text=$DISABLED
     tooltip="Casting disabled"
-    class="disabled"
+    class="deactivated"
 else
     text=$ENABLED
     tooltip="Casting enabled"
-    class="enabled"
+    class="activated"
 fi
 
 echo "{\"text\":\"$text\", \"tooltip\":\"$tooltip\", \"class\":\"$class\"}"

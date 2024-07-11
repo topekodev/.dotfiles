@@ -15,6 +15,7 @@ zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
+zinit light kutsan/zsh-system-clipboard
 
 # Snippets
 zinit snippet OMZP::git
@@ -39,8 +40,9 @@ bindkey "^?" backward-delete-char
 bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey -s '^e' 'vim $(fzf)\n'
+bindkey -s '^e' 'vim +"Telescope find_files"\n'
 bindkey -s '^f' '~/.scripts/tmux-sessionizer.sh\n'
+bindkey -v
 
 # History
 HISTSIZE=5000
@@ -59,6 +61,7 @@ setopt hist_find_no_dups
 alias ls='ls --color'
 alias vim=nvim
 alias vi=nvim
+alias neofetch=fastfetch
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 
 # Shell integrations

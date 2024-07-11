@@ -1,5 +1,8 @@
 #!/usr/bin/env bash
 
+# Hyprland
+hyprctl reload
+
 # Waybar
 if [ -z $(pidof waybar) ]; then
     waybar &

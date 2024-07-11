@@ -3,7 +3,7 @@ vim.opt.updatetime = 300
 vim.opt.backup = false
 vim.opt.swapfile = false
 
-vim.opt.smartindent = true
+vim.opt.indentexpr = ""
 
 vim.opt.wrap = false
 
@@ -27,3 +27,5 @@ vim.opt.shiftwidth = 4
 vim.opt.expandtab = true
 
 vim.opt.clipboard = "unnamedplus"
+
+vim.opt.conceallevel = 2

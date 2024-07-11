@@ -33,7 +33,7 @@
     origin = top-right
 
     # Offset from the origin
-    offset = 10x10
+    offset = 14x14
 
     # Scale factor. It is auto-detected if value is 0.
     scale = 0
@@ -95,7 +95,7 @@
     frame_width = 1
 
     # Defines color of the frame around the notification window.
-    frame_color = "#121012"
+    frame_color = "#808080"
 
     # Size of gap to display between notifications - requires a compositor.
     # If value is greater than 0, separator_height will be ignored and a border
@@ -236,7 +236,7 @@
     ### Misc/Advanced ###
 
     # dmenu path.
-    dmenu = /usr/bin/dmenu -p dunst:
+    dmenu = /usr/bin/fuzzel --dmenu -p 'dunst: '
 
     # Browser for opening urls in context menu.
     browser = /usr/bin/xdg-open
@@ -255,7 +255,7 @@
     # corners.
     # The radius will be automatically lowered if it exceeds half of the
     # notification height to avoid clipping text and/or icons.
-    corner_radius = 10
+    corner_radius = 5
 
     # Ignore the dbus closeNotification message.
     # Useful to enforce the timeout set by dunst configuration. Without this
@@ -318,14 +318,14 @@
 [urgency_low]
     # IMPORTANT: colors have to be defined in quotation marks.
     # Otherwise the "#" and following would be interpreted as a comment.
-    background = "#1F1F26"
+    background = "#121012"
     foreground = "#888888"
     timeout = 10
     # Icon for notifications with low urgency, uncomment to enable
     #default_icon = /path/to/icon
 
 [urgency_normal]
-    background = "#1F1F26"
+    background = "#12101299"
     foreground = "#ffffff"
     timeout = 10
     override_pause_level = 30
@@ -333,7 +333,7 @@
     #default_icon = /path/to/icon
 
 [urgency_critical]
-    background = "#900000"
+    background = "#90000099"
     foreground = "#ffffff"
     frame_color = "#ff0000"
     timeout = 0

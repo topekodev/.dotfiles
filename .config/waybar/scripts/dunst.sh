@@ -7,7 +7,7 @@ DISABLED=
 if dunstctl is-paused | grep -q "false" ; then
     text=$ENABLED
     tooltip="History: $HISTORY"
-    class="enabled"
+    class="activated"
 else
     if [ $WAITING != 0]; then
         text="$DISABLED•"
@@ -15,7 +15,7 @@ else
         text=$DISABLED
     fi
     tooltip="Waiting: $WAITING"
-    class="disabled"
+    class="deactivated"
 fi
 
 echo "{\"text\":\"$text\", \"tooltip\":\"$tooltip\", \"class\":\"$class\"}"

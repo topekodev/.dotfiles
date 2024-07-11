@@ -11,7 +11,7 @@ return {
 
         treesitter.setup {
             ensure_installed = {
-                "javascript", "typescript", "css", "html", "json", "svelte", "yaml", "java", "python", "bash", "c", "lua", "vim", "vimdoc", "query"
+                "javascript", "typescript", "css", "scss", "html", "json", "markdown", "markdown_inline", "svelte", "yaml", "toml", "dockerfile", "java", "python", "rust", "go", "bash", "c", "lua", "vim", "vimdoc", "query"
             },
 
             sync_install = false,
@@ -24,6 +24,10 @@ return {
             },
 
             autotag = {
+                enable = true
+            },
+
+            indent = {
                 enable = true
             }
         }

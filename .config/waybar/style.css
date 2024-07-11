@@ -1,23 +1,32 @@
 * {
 	font-family: Roboto;
 	font-size: 14px;
+    font-weight: 600;
+    color: white;
+}
+tooltip {
+	background: #121012;
+    border: 1px solid rgba(100, 114, 125, 0.5);
+}
+tooltip label {
+    font-size: 12px;
+    font-weight: 400;
+    color: white;
 }
 window#waybar {
-	background: rgba(18, 16, 18, 0.9);
-	color: #F1FFFE;
+	background: alpha(#121012, 0.6);
 }
 box.horizontal {
-	padding: 3px 5px;
+	padding: 0 5px;
 }
 box.horizontal.modules-right widget > label {
-	padding: 0 10px;
+	padding: 12px 10px;
 }
 #tray {
-    padding: 0 10px;
+    padding: 0 8px;
 }
 #custom-system {
     padding: 0 10px;
-    color: #F1FFFE;
 }
 #custom-media.stopped {
     padding: 0;
@@ -27,37 +36,26 @@ box.horizontal.modules-right widget > label {
 	padding: 0;
 }
 #workspaces button {
-	color: Grey;
 	padding: 0 5px;
 	border: none;
 	border-radius: 0;
+    opacity: 0.5;
 }
 #workspaces button:hover {
     background: none;
 }
 #workspaces button.active {
-    color: #F1FFFE;
+    opacity: 1;
 }
 #window {
 	padding: 0;
-	margin-left: 10px;
+    margin: 0 0 0 10px;
 }
+.deactivated,
 #network.disconnected,
 #bluetooth.off,
 #wireplumber.muted {
-	color: Grey;
-}
-.enabled {
-    color: #F1FFFE;
-}
-.disabled {
-    color: Grey;
-}
-.activated {
-    color: #F1FFFE;
-}
-.deactivated {
-    color: Grey;
+    opacity: 0.5;
 }
 #battery.warning {
     color: #FFB86C;

@@ -5,20 +5,14 @@
     "hyprland/workspaces": {
         "all-outputs": true,
         "disable-scroll": true,
-        "format": "{name}",
-        "format-icons": {
-            "urgent": "",
-            "focused": "",
-            "default": "",
-        }
+        "format": "{name}"
     },
     "custom/system": {
-        "format": "",
+        "format": "",
         "tooltip": true,
-        "exec": "~/.config/waybar/scripts/system.sh",
-        "return-type": "json",
-        "on-click": "~/.scripts/system-dmenu.sh",
-        "restart-interval": 7200
+        "exec": "uname -r",
+        "tooltip-format": "{}",
+        "on-click": "~/.scripts/system-dmenu.sh"
     },
     "custom/fcitx": {
         "format": "{}",
@@ -64,7 +58,10 @@
         "on-click": "fuzzel"
     },
     "hyprland/window": {
-        "format": "{title}",
+        "format": "{initialTitle}",
+        "rewrite": {
+            "": "Desktop"
+        },
         "max-length": 50
     },
     "tray": {
