@@ -18,7 +18,7 @@ case $ARG in
         ;;
     area-clipboard)
         slurp | grim -g - - | $CLIPBOARD
-        notify-send -t 3000 "Screenshot copied to clipboard" "Use Ctrl+v to paste."
+        notify-send -t 3000 "Screenshot copied to clipboard" "Use Ctrl+V to paste."
         ;;
     fullscreen)
         filename=$LOCATION/screenshot-$(date +%s).png
@@ -27,7 +27,7 @@ case $ARG in
         ;;
     fullscreen-clipboard)
         grim - | $CLIPBOARD
-        notify-send -t 3000 "Screenshot copied to clipboard" "Use Ctrl+v to paste."
+        notify-send -t 3000 "Screenshot copied to clipboard" "Use Ctrl+V to paste."
         ;;
     *)
         exit 1

@@ -74,5 +74,10 @@ return {
             capabilities = capabilities,
             on_attach = on_attach
         })
+
+        require("lspconfig").rust_analyzer.setup{
+            cmd = {"/usr/bin/rust-analyzer"},
+        }
+
     end
 }

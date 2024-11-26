@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$( (pwd ; find ~/Projects -mindepth 2 -maxdepth 2 -type d ; find ~/ -mindepth 1 -maxdepth 1 -type d -name ".*") | fzf)
+    selected=$( (pwd ; find ~/Projects -mindepth 2 -maxdepth 2 -type d ; find ~/ -mindepth 1 -maxdepth 1 -type d -name ".*" ; find ~/Obsidian -mindepth 1 -maxdepth 1 -type d) | fzf)
 fi
 
 if [[ -z $selected ]]; then

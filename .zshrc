@@ -40,8 +40,9 @@ bindkey "^?" backward-delete-char
 bindkey '^y' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
-bindkey -s '^e' 'vim +"Telescope find_files"\n'
+bindkey -s '^e' 'vim $(fzf)\n'
 bindkey -s '^f' '~/.scripts/tmux-sessionizer.sh\n'
+bindkey -s '^g' 'echo -n "grep: "; read param && rg $param | fzf\n'
 bindkey -v
 
 # History
@@ -63,6 +64,7 @@ alias vim=nvim
 alias vi=nvim
 alias neofetch=fastfetch
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias mpv='mpv --force-window'
 
 # Shell integrations
 eval "$(fzf --zsh)"
@@ -70,3 +72,10 @@ eval "$(zoxide init --cmd cd zsh)"
 
 # oh-my-posh
 eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
+
+# bun completions
+[ -s "/home/tomi/.bun/_bun" ] && source "/home/tomi/.bun/_bun"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

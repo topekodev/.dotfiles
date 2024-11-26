@@ -1,13 +1,49 @@
 #!/usr/bin/env bash
 
+# Check dependencies
+if ! command -v swaybg &> /dev/null; then
+    echo "swaybg not found"
+    exit 1
+fi
+if ! command -v magick &> /dev/null; then
+    echo "magick not found"
+    exit 1
+fi
+if ! command -v fd &> /dev/null; then
+    echo "fd not found"
+    exit 1
+fi
+
+# Symlink current wallpaper
+DATA_DIR=~/.wallpaper
+mkdir -p $DATA_DIR
+
 set_bg() {
+    if [[ "$1" == "image" ]]; then
+        if [ -f "$DATA_DIR/current" ]; then
+            rm "$DATA_DIR/current"
+        fi
+        cp "$2" "$DATA_DIR/current"
+        echo "$2" > "$DATA_DIR/current.txt"
+    elif [[ "$1" == "color" ]]; then
+        if [ -f "$DATA_DIR/current" ]; then
+            rm "$DATA_DIR/current"
+        fi
+        magick -size 1920x1080 canvas:"$2" "$DATA_DIR/color.jpg"
+        mv "$DATA_DIR/color.jpg" "$DATA_DIR/current"
+        echo "$2" > "$DATA_DIR/current.txt"
+    fi
+
+    # Start swaybg
     PID=$(pidof swaybg)
     if [ -z "$PID" ]; then
-        swaybg "$1" "$2" &
+        swaybg -i "$DATA_DIR/current" &> /dev/null &
     else
         kill $PID
-        swaybg "$1" "$2" &
+        swaybg -i "$DATA_DIR/current" &> /dev/null &
     fi
+
+    echo "$2" 
 }
 
 case $1 in
@@ -30,7 +66,7 @@ case $1 in
             echo "Invalid color $COLOR"
             exit 1
         fi
-        set_bg "-c" "$COLOR"
+        set_bg "color" "$COLOR"
         ;;
     -i|--image)
         BG=$2
@@ -42,7 +78,11 @@ case $1 in
             echo "File $BG does not exist"
             exit 1
         fi
-        set_bg "-i" "$BG"
+        if ! file "$BG" | grep "image data" &> /dev/null; then
+            echo "File is not an image"
+            exit 1
+        fi
+        set_bg "image" "$BG"
         ;;
     -d|--directory)
         BG_DIR=$2
@@ -58,10 +98,21 @@ case $1 in
             echo "Directory $BG_DIR is empty"
             exit 1
         fi
-        BG="$BG_DIR/"$(ls $BG_DIR | shuf -n 1)
-        set_bg "-i" "$BG"
+        BG_DIR_SIZE=$(fd . $BG_DIR -e jpg -e jpeg -e png | wc -l)
+        BG_CURRENT=$(cat ~/.wallpaper/current.txt)
+        BG=$(fd . $BG_DIR -e jpg -e jpeg -e png | shuf -n 1)
+        if [ "$BG_DIR_SIZE" -gt "1" ]; then
+            while [[ "$BG" == "$BG_CURRENT" ]]; do
+                BG=$(fd . $BG_DIR -e jpg -e jpeg -e png | shuf -n 1)
+            done
+        fi
+        if ! file "$BG" | grep "image data" &> /dev/null; then
+            echo "File is not an image"
+            exit 1
+        fi
+        set_bg "image" "$BG"
         ;;
     *)
-        set_bg "-c" "#000000"
+        set_bg "color" "#000000"
         ;;
 esac

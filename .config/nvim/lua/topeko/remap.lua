@@ -1,7 +1,8 @@
 vim.g.mapleader = " "
 
 -- Netrw
-vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- vim.keymap.set("n", "<leader>e", vim.cmd.Ex)
+-- using yazi instead
 
 -- Create file
 vim.keymap.set('n', '<leader>c', function()
@@ -22,9 +23,11 @@ end)
 vim.keymap.set("n", "<leader>n", vim.cmd.bnext)
 vim.keymap.set("n", "<leader>p", vim.cmd.bprev)
 vim.keymap.set("n", "<leader>db", vim.cmd.bdelete)
+vim.keymap.set("n", "<leader>Db", ":bdelete!<CR>")
 
 -- Tabs
-vim.keymap.set("n", "<leader>t", vim.cmd.Texplore)
+-- vim.keymap.set("n", "<leader>t", vim.cmd.Texplore)
+vim.keymap.set("n", "<leader>t", vim.cmd.tabe)
 vim.keymap.set("n", "<leader>dt", vim.cmd.tabc)
 for i = 1, 9 do
     vim.keymap.set("n", "<leader>" .. i, function()
