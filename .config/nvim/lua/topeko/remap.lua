@@ -15,7 +15,7 @@ vim.keymap.set('n', '<leader>c', function()
 end)
 
 -- Alternate file
-vim.keymap.set("n", "<leader>a", function()
+vim.keymap.set("n", "<leader>s", function()
     vim.cmd(":e#")
 end)
 
@@ -24,6 +24,11 @@ vim.keymap.set("n", "<leader>n", vim.cmd.bnext)
 vim.keymap.set("n", "<leader>p", vim.cmd.bprev)
 vim.keymap.set("n", "<leader>db", vim.cmd.bdelete)
 vim.keymap.set("n", "<leader>Db", ":bdelete!<CR>")
+
+-- Diagnostics
+vim.keymap.set("n", "<leader>ll", function()
+    vim.cmd(':lua vim.diagnostic.setqflist()')
+end)
 
 -- Tabs
 -- vim.keymap.set("n", "<leader>t", vim.cmd.Texplore)

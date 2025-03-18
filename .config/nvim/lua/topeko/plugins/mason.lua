@@ -14,7 +14,7 @@ return {
             ensure_installed = {
                 "lua_ls",
                 "bashls",
-                "tsserver",
+                "ts_ls",
                 "html",
                 "htmx",
                 "cssls",

@@ -37,11 +37,12 @@ zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview
 
 # Keybindings
 bindkey "^?" backward-delete-char
-bindkey '^y' autosuggest-accept
+bindkey '^a' autosuggest-accept
 bindkey '^p' history-search-backward
 bindkey '^n' history-search-forward
 bindkey -s '^e' 'vim $(fzf)\n'
 bindkey -s '^f' '~/.scripts/tmux-sessionizer.sh\n'
+bindkey -s '^b' '~/.scripts/dev-tools.sh\n'
 bindkey -s '^g' 'echo -n "grep: "; read param && rg $param | fzf\n'
 bindkey -v
 
@@ -79,3 +80,20 @@ eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"
 # bun
 export BUN_INSTALL="$HOME/.bun"
 export PATH="$BUN_INSTALL/bin:$PATH"
+
+# API keys
+load_api_keys() {
+    local secrets_dir="$HOME/.secrets"
+
+    if [[ ! -d "$secrets_dir" ]]; then
+        return
+    fi
+
+    for file in "$secrets_dir"/*; do
+        if [[ -f "$file" ]]; then
+            local varname=$(basename "$file")
+            export "$varname=$(cat "$file")"
+        fi
+    done
+}
+load_api_keys

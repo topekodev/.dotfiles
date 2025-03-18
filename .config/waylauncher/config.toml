@@ -1,0 +1,12 @@
+terminal = "foot"
+
+[window]
+top = 300
+width = 800
+height = 500
+
+[keys]
+exit = ["Escape"]
+action = ["Return"]
+next = ["C-j", "C-n", "Down"]
+previous = ["C-k", "C-p", "Up"]
